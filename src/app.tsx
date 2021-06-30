@@ -10,7 +10,7 @@ import { FC } from 'react';
 export const App: FC = () => {
     return (
         <main>
-            <h1>Продвинутый виджет погоды</h1>
+            <h1>Органайзер</h1>
         </main>
     );
 };

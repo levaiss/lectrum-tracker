@@ -7,9 +7,11 @@ import { Provider } from 'react-redux';
 import { App } from './app';
 
 // Instruments
-import './theme/styles/index.scss';
 import { queryClient } from './lib/react-query';
 import { store } from './lib/redux/init/store';
+import './theme/styles/index.scss';
+import 'react-datepicker/dist/react-datepicker.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 render(
     <Provider store = { store }>
