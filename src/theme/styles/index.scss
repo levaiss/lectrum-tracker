@@ -62,11 +62,11 @@ nav {
             background-color: $color11;
             color: white;
 
-            
+
         }
     }
 
-    
+
 }
 
 .sign-form {
@@ -121,7 +121,7 @@ nav {
             color: #252631;
             font-size: 20px;
             margin-bottom: 5px;
-            
+
             &::-webkit-input-placeholder {
                 color: #98a9bc;
             }
@@ -174,7 +174,7 @@ nav {
     }
 
 
-    
+
 }
 
 main {
@@ -402,6 +402,11 @@ main {
             border: none;
             margin-left: 26px;
 
+            &:disabled {
+                cursor: not-allowed;
+                color: $color17;
+            }
+
             &::before {
                 content: '\f14a';
                 font-family: 'Line Awesome Free';
@@ -414,6 +419,11 @@ main {
             &:hover {
                 cursor: pointer;
                 color: $color3;
+            }
+
+            &:disabled:hover {
+                cursor: not-allowed;
+                color: $color17;
             }
 
             &.completed {
@@ -677,7 +687,7 @@ main {
 
 footer {
     position: absolute;
-    
+
     bottom: 0;
     padding: 20px 0 23px 38px;
 
