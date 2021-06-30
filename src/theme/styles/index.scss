@@ -112,6 +112,11 @@ nav {
         margin-bottom: 15px;
         color: $color2;
 
+        .errorMessage {
+            color: #8D211D;
+            margin-bottom: 5px;
+        }
+
         input {
             width: 100%;
             border: none;
