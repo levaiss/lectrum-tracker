@@ -1,6 +1,6 @@
-# Другий персональний проект курсу → [Професійний курс з React, Redux, MobX, TypeScript](https://lectrum.io/course/react-redux?utm_medium=referral&utm_source=gitlab-weather&utm_campaign=rtx)
+# Другий персональний проєкт курсу → [Професійний курс з React, Redux, MobX, TypeScript](https://lectrum.io/course/react-redux?utm_medium=referral&utm_source=gitlab-weather&utm_campaign=rtx)
 
-[Посилання на додаток-референс](https://lab.lectrum.io/todo)
+[Посилання на застосунок-референс](https://lab.lectrum.io/todo)
 
 
 Ласкаво просимо! 🚀
