@@ -9,7 +9,7 @@
 
 ```sh
 yarn
-# или
+# або
 npm i
 ```
 
@@ -17,7 +17,7 @@ npm i
 
 ```sh
 yarn dev
-# или
+# або
 npm run dev
 ```
 
@@ -25,7 +25,7 @@ npm run dev
 
 ```sh
 yarn build
-# или
+# або
 npm run build
 ```
 
@@ -33,6 +33,6 @@ npm run build
 
 ```sh
 yarn build && yarn start  
-# или
+# або
 npm run build && npm run start
 ```
