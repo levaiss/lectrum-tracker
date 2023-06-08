@@ -12,18 +12,8 @@ export interface loginRequestData {
     password: string
 }
 
-export interface newPasswordRequestData {
-    oldPassword: string
-    newPassword: string
-}
-
 export interface signUpRequestData {
     name: string
     email: string
     password: string
-}
-
-export interface updateProfileRequestData {
-    firstName: string
-    lastName: string
 }

@@ -89,7 +89,6 @@ nav {
         font-weight: 500;
         margin-bottom: 20px;
         color: $color17;
-
     }
 
     label {
@@ -98,8 +97,8 @@ nav {
         margin-bottom: 15px;
         color: $color2;
 
-        .errorMessage {
-            color: #8D211D;
+        .error-message {
+            color: $color20;
             margin-bottom: 5px;
         }
 
@@ -162,6 +161,28 @@ nav {
             filter: grayscale(100%);
             opacity: 0.3;
         }
+    }
+}
+
+.controls {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 37px;
+}
+
+.button-create-task {
+    background: none;
+    border: none;
+    color: #4d7cfe;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    transition: transform .2s;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.1);
     }
 }
 

@@ -23,7 +23,6 @@ export const LoginForm: FC<loginFormProps> = ({ handlerOnFormSubmit }) => {
         handleSubmit,
         formState,
         register,
-        reset,
     } = useForm({
         mode:          'onChange',
         resolver:      yupResolver(LoginFormSchema),
@@ -33,15 +32,8 @@ export const LoginForm: FC<loginFormProps> = ({ handlerOnFormSubmit }) => {
         },
     });
 
-    const submitForm = handleSubmit((credentials: loginRequestData): void => {
-        handlerOnFormSubmit(credentials)
-            .then((payload) => {
-                reset();
-
-                return payload;
-            })
-            .catch(() => {
-            });
+    const submitForm = handleSubmit((credentials: loginRequestData) => {
+        return handlerOnFormSubmit(credentials);
     });
 
     return (

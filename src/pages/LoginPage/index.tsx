@@ -23,10 +23,13 @@ export const LoginPage: FC = () => {
         = (credentials: loginRequestData): Promise<AsyncThunk<Token, loginRequestData, any>> => {
             // @ts-expect-error
             return dispatch(login(credentials))
-                .then((payload: Token) => {
-                    navigate('/task-manager');
+                .then((response: { payload: Token }) => {
+                    const { payload } = response;
+                    if (payload) {
+                        navigate('/task-manager');
+                    }
 
-                    return payload;
+                    return response;
                 });
         };
 

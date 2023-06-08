@@ -5,6 +5,10 @@ import { FC } from 'react';
 
 export const ProfilePage: FC = () => {
     return (
-        <h1>Profile</h1>
+        <main>
+            <div className = 'wrap'>
+                <h1>Profile</h1>
+            </div>
+        </main>
     );
 };

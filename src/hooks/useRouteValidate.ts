@@ -1,11 +1,11 @@
 // Core
 import { useEffect } from 'react';
+import { ThunkDispatch } from 'redux-thunk';
 import { useDispatch, useSelector } from 'react-redux';
-import { Dispatch } from 'redux';
 
 // Stores
 import {
-    getIsAuth, getTokenCheckStatus, setToken, setTokenCheckStatus,
+    getIsAuth, getTokenCheckStatus, setToken, setTokenCheckStatus, fetchProfile,
 } from '../store/authSlice';
 
 // Instruments
@@ -20,30 +20,20 @@ interface useRouteValidateResult {
 export function useRouteValidate(): useRouteValidateResult {
     const isAuth: boolean = useSelector(getIsAuth);
     const tokenCheckStatus: FetchStatusesType = useSelector(getTokenCheckStatus);
-    const dispatch: Dispatch = useDispatch();
+    const dispatch: ThunkDispatch<any, any, any> = useDispatch();
 
     useEffect(() => {
-        const { token } = api;
-        if (!token) {
-            dispatch(setTokenCheckStatus(FetchStatuses.success));
-
+        if (tokenCheckStatus !== FetchStatuses.idle) {
             return;
         }
 
-        void (async () => {
-            try {
-                if (tokenCheckStatus !== FetchStatuses.idle) {
-                    return false;
-                }
+        const { token } = api;
+        if (token) {
+            dispatch(setToken(token));
+            dispatch(fetchProfile(null));
+        }
 
-                await api.auth.auth();
-                dispatch(setToken(api.token));
-            } catch (error) {
-                api.removeToken();
-            } finally {
-                dispatch(setTokenCheckStatus(FetchStatuses.success));
-            }
-        })();
+        dispatch(setTokenCheckStatus(FetchStatuses.success));
     }, []);
 
     return {

@@ -15,6 +15,7 @@
         "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/no-misused-promises": "off",
         "@typescript-eslint/naming-convention": "off",
-        "no-param-reassign": 0
+        "no-param-reassign": 0,
+        "@typescript-eslint/no-explicit-any": "off"
     }
 }

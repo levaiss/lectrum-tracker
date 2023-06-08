@@ -12,7 +12,7 @@ import { ROOT_URL, AUTH_TOKEN_KAY } from './config';
 import { UserModel } from '../types/UserModel';
 
 export const api: Api = {
-    get token(): string {
+    get token(): Token {
         return localStorage.getItem(AUTH_TOKEN_KAY) ?? '';
     },
     setToken(token: Token): void {
@@ -23,7 +23,7 @@ export const api: Api = {
     },
     auth: {
         async signup(userInfo: signUpRequestData): Promise<Token> {
-            const { data }: { data: Token } = await axios.post(`${ROOT_URL}/auth/register`, userInfo);
+            const { data }: { data: Token } = await axios.post(`${ROOT_URL}/auth/registration`, userInfo);
 
             return data;
         },
@@ -37,7 +37,7 @@ export const api: Api = {
 
             return data;
         },
-        async auth(): Promise<UserModel> {
+        async profile(): Promise<UserModel> {
             const { data }: { data: UserModel } = await axios.get(`${ROOT_URL}/auth/profile`, {
                 headers: {
                     Authorization: `Bearer ${api.token}`,

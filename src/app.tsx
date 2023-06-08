@@ -40,7 +40,7 @@ export const App: FC = () => {
     return (
         <>
             <ToastContainer newestOnTop transition = { Slide } />
-            <Header/>
+            <Header />
             <Routes>
                 <Route path = '/' element = { <HomePage /> } />
                 <Route element = {
