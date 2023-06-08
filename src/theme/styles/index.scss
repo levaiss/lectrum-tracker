@@ -1,17 +1,15 @@
 @import './reset';
 @import './base';
 @import './palette';
-@import './icons';
 @import './fonts';
 
 body {
-    background-color: $color1;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Rubik', sans-serif;
     font-weight: 400;
+    background-color: $color1;
 }
 
 textarea {
-    font-family: 'Roboto', sans-serif;
     font-size: 16px;
 }
 
@@ -25,13 +23,13 @@ nav {
         text-decoration: unset;
         margin-left: 30px;
         color: $color2;
-        font-family: 'Roboto', sans-serif;
         font-weight: 200;
         font-size: 18px;
 
         &:hover {
             color: $color13;
         }
+
         &.active {
             color: $color3;
             font-weight: 700;
@@ -39,7 +37,6 @@ nav {
     }
 
     .button-logout {
-
         display: flex;
         justify-content: center;
         align-items: center;
@@ -48,7 +45,6 @@ nav {
         font-size: 14px;
         text-transform: uppercase;
         font-weight: bold;
-        background: none;
         color: #ffffff;
         border-radius: 4px;
         transition: all 200ms;
@@ -65,8 +61,6 @@ nav {
 
         }
     }
-
-
 }
 
 .sign-form {
@@ -79,7 +73,7 @@ nav {
         padding: 50px 40px;
     }
 
-    fieldset{
+    fieldset {
         border: unset;
     }
 
@@ -87,10 +81,9 @@ nav {
         margin-top: 40px;
         font-size: 14px;
         color: $color2;
-        font-family: 'Roboto', sans-serif;
         font-weight: 200;
 
-        a{
+        a {
             text-decoration: unset;
             color: $color3;
         }
@@ -99,7 +92,6 @@ nav {
     legend {
         text-align: center;
         font-size: 24px;
-        font-family: 'Roboto', sans-serif;
         font-weight: 500;
         margin-bottom: 20px;
         color: $color17;
@@ -177,44 +169,11 @@ nav {
             opacity: 0.3;
         }
     }
-
-
-
 }
 
 main {
     padding-top: 87px;
     min-height: 800px;
-}
-
-.controls {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 37px;
-}
-
-.button-create-task {
-    background: none;
-    border: none;
-    color: $color3;
-    font-weight: 600;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    transition: all 200ms;
-
-    &::before {
-        content: '\f055';
-        font-family: 'Line Awesome Free';
-        font-weight: 900;
-        margin-right: 7px;
-        font-size: 18px;
-    }
-
-    &:hover {
-        transform: scale(1.1);
-        cursor: pointer;
-    }
 }
 
 .tag {
@@ -319,28 +278,10 @@ main {
                     font-size: 14px;
                     color: $color2;
                     margin-right: 18px;
-
-                    &::before {
-                        content: '\f133';
-                        font-family: 'Line Awesome Free';
-                        font-weight: 900;
-                        margin-right: 6px;
-                    }
                 }
             }
 
             &.completed {
-                &::before {
-                    content: '\f00c';
-                    font-family: 'Line Awesome Free';
-                    font-weight: 900;
-                    color: $color6;
-                    background-color: $color3;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-
                 .title {
                     color: $color17;
                 }
@@ -412,15 +353,6 @@ main {
                 color: $color17;
             }
 
-            &::before {
-                content: '\f14a';
-                font-family: 'Line Awesome Free';
-                font-weight: 900;
-                font-size: 19px;
-                display: block;
-                margin-right: 12px;
-            }
-
             &:hover {
                 cursor: pointer;
                 color: $color3;
@@ -442,15 +374,6 @@ main {
             outline: none;
             margin-right: 17px;
             transition: all 200ms;
-
-            &::before {
-                content: '\f00d';
-                font-family: 'Line Awesome Free';
-                font-weight: 900;
-                font-size: 26px;
-                display: block;
-                color: $color11;
-            }
 
             &:hover {
                 cursor: pointer;
@@ -498,15 +421,6 @@ main {
                     color: $color4;
                     border: none;
                     outline: none;
-                }
-
-                &::before {
-                    content: '\f133';
-                    font-family: 'Line Awesome Free';
-                    font-weight: 900;
-                    font-size: 18px;
-                    margin-right: 6px;
-                    color: $color17;
                 }
             }
         }
@@ -577,20 +491,6 @@ main {
 
                     &.completed {
                         color: $color4;
-
-                        button::before {
-                            content: '\f00c';
-                            font-family: 'Line Awesome Free';
-                            font-weight: 900;
-                            color: $color6;
-                            background-color: $color3;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            height: 100%;
-                            font-size: 15px;
-                            border-radius: 2px;
-                        }
                     }
 
                     &.incompleted {
@@ -692,9 +592,12 @@ main {
 
 footer {
     position: absolute;
-
+    left: 0;
     bottom: 0;
-    padding: 20px 0 23px 38px;
+    width: 100%;
+    height: auto;
+    padding: 20px 38px;
+    background-color: #fff;
 
     @media screen and (max-height: 920px) {
         position: unset;
@@ -703,40 +606,5 @@ footer {
     span {
         font-size: 14px;
         color: $color2;
-    }
-}
-
-.container404 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: calc(100vh - 100px);
-
-    h1,
-    h2 {
-        font-size: 48px;
-        color: $color4;
-    }
-
-    h2 {
-        & > span {
-            font-weight: 600;
-            color: $color11;
-        }
-    }
-
-    & a {
-        color: $color4;
-        cursor: pointer;
-        transition: color 0.1s ease;
-
-        &:hover {
-            color: $color3;
-        }
-
-        & .active {
-            color: lighten($color3, 20);
-        }
     }
 }

@@ -1,9 +1,20 @@
 {
-    "extends": [
-        "@sotream/eslint-config-react-ts"
-    ],
+    "extends": ["@sotream/eslint-config-react-ts"],
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
     "rules": {
         "no-void": "off",
-        "indent": ["error", 4, { "SwitchCase": 1 }]
+        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "react/prop-types": "off",
+        "react/react-in-jsx-scope": "off",
+        "@typescript-eslint/strict-boolean-expressions": 0,
+        "@typescript-eslint/ban-ts-ignore": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-misused-promises": "off",
+        "@typescript-eslint/naming-convention": "off",
+        "no-param-reassign": 0
     }
 }
