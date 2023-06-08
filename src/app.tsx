@@ -9,12 +9,14 @@ import { toast, ToastContainer, Slide } from 'react-toastify';
 import { PrivateRoute } from './components/PrivateRoute';
 import { PublicRoute } from './components/PublicRoute';
 import { Footer } from './components/Footer';
+import { Header } from './components/Header';
 
 // Pages
 import { HomePage } from './pages/HomePage';
 import { LoginPage } from './pages/LoginPage';
 import { SignUpPage } from './pages/SignUpPage';
-import { TaskManager } from './pages/TaskManager';
+import { TaskManagerPage } from './pages/TaskManagerPage';
+import { ProfilePage } from './pages/ProfilePage';
 import { NoMatch } from './pages/NoMatch';
 
 // Store
@@ -38,6 +40,7 @@ export const App: FC = () => {
     return (
         <>
             <ToastContainer newestOnTop transition = { Slide } />
+            <Header/>
             <Routes>
                 <Route path = '/' element = { <HomePage /> } />
                 <Route element = {
@@ -47,7 +50,8 @@ export const App: FC = () => {
                     <Route path = '/signup' element = { <SignUpPage /> } />
                 </Route>
                 <Route element = { <PrivateRoute redirectPath = '/login' /> }>
-                    <Route path = '/task-manager' element = { <TaskManager /> } />
+                    <Route path = '/task-manager' element = { <TaskManagerPage /> } />
+                    <Route path = '/profile' element = { <ProfilePage /> } />
                 </Route>
                 <Route path = '*' element = { <NoMatch /> } />
             </Routes>

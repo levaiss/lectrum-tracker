@@ -2,9 +2,14 @@
 import { FC } from 'react';
 
 // Components
+import { LoginForm } from '../../components/Forms/LoginForm';
 
 export const LoginPage: FC = () => {
     return (
-        <h1>Login</h1>
+        <main>
+            <section className = 'sign-form'>
+                <LoginForm />
+            </section>
+        </main>
     );
 };

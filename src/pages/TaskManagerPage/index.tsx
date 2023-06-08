@@ -1,7 +1,7 @@
 // Core
 import { FC } from 'react';
 
-export const TaskManager: FC = () => {
+export const TaskManagerPage: FC = () => {
     return (
         <h1>Task Manager</h1>
     );
