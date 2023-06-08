@@ -3,14 +3,22 @@ import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { AsyncThunk } from '@reduxjs/toolkit';
 
 // Components
 import { UiInput } from '../../Ui/UiInput';
 
 // Instruments
 import { LoginFormSchema } from './config';
+import { Token } from '../../../types/common';
+import { loginRequestData } from '../../../types/Api';
 
-export const LoginForm: FC = () => {
+interface loginFormProps {
+    handlerOnFormSubmit:
+    (credentials: loginRequestData) => Promise<AsyncThunk<Token, loginRequestData, any>>;
+}
+
+export const LoginForm: FC<loginFormProps> = ({ handlerOnFormSubmit }) => {
     const {
         handleSubmit,
         formState,
@@ -25,8 +33,19 @@ export const LoginForm: FC = () => {
         },
     });
 
+    const submitForm = handleSubmit((credentials: loginRequestData): void => {
+        handlerOnFormSubmit(credentials)
+            .then((payload) => {
+                reset();
+
+                return payload;
+            })
+            .catch(() => {
+            });
+    });
+
     return (
-        <form onSubmit = { () => {} }>
+        <form onSubmit = { submitForm }>
             <fieldset>
                 <legend>Вхід</legend>
                 <UiInput

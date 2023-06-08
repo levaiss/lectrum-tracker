@@ -9,6 +9,7 @@ import {
 
 // Instruments
 import { ROOT_URL, AUTH_TOKEN_KAY } from './config';
+import { UserModel } from '../types/UserModel';
 
 export const api: Api = {
     get token(): string {
@@ -22,26 +23,33 @@ export const api: Api = {
     },
     auth: {
         async signup(userInfo: signUpRequestData): Promise<Token> {
-            const { data }: { data: Token } = await axios.post(`${ROOT_URL}/register`, userInfo);
+            const { data }: { data: Token } = await axios.post(`${ROOT_URL}/auth/register`, userInfo);
 
             return data;
         },
         async login(credentials: loginRequestData): Promise<Token> {
-            const { data }: { data: Token } = await axios.post(`${ROOT_URL}/login`, credentials);
+            const { email, password } = credentials;
+            const { data }: { data: Token } = await axios.get(`${ROOT_URL}/auth/login`, {
+                headers: {
+                    Authorization: `Basic ${btoa(`${email}:${password}`)}`,
+                },
+            });
 
             return data;
         },
-        auth(): Promise<AxiosResponse> {
-            return axios.get(`${ROOT_URL}/auth`, {
+        async auth(): Promise<UserModel> {
+            const { data }: { data: UserModel } = await axios.get(`${ROOT_URL}/auth/profile`, {
                 headers: {
-                    Authorization: `Base ${api.token}`,
+                    Authorization: `Bearer ${api.token}`,
                 },
             });
+
+            return data;
         },
         logout(): Promise<AxiosResponse> {
-            return axios.get(`${ROOT_URL}/logout`, {
+            return axios.get(`${ROOT_URL}/auth/logout`, {
                 headers: {
-                    Authorization: `Base ${api.token}`,
+                    Authorization: `Bearer ${api.token}`,
                 },
             });
         },
