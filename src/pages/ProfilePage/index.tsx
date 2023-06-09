@@ -7,7 +7,9 @@ export const ProfilePage: FC = () => {
     return (
         <main>
             <div className = 'wrap'>
-                <h1>Profile</h1>
+                <div>
+                    <h1>Profile</h1>
+                </div>
             </div>
         </main>
     );

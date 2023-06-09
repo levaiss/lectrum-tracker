@@ -10,6 +10,7 @@ import {
 // Instruments
 import { ROOT_URL, AUTH_TOKEN_KAY } from './config';
 import { UserModel } from '../types/UserModel';
+import { TaskModel } from '../types/TaskModel';
 
 export const api: Api = {
     get token(): Token {
@@ -52,6 +53,17 @@ export const api: Api = {
                     Authorization: `Bearer ${api.token}`,
                 },
             });
+        },
+    },
+    tasks: {
+        async all(): Promise<TaskModel[]> {
+            const { data }: { data: TaskModel[] } = await axios.get(`${ROOT_URL}/tasks`, {
+                headers: {
+                    Authorization: `Bearer ${api.token}`,
+                },
+            });
+
+            return data;
         },
     },
 };
