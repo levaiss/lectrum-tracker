@@ -1,7 +1,5 @@
 // Core
 import { FC } from 'react';
-import { useDispatch } from 'react-redux';
-import { Dispatch } from 'redux';
 import { AsyncThunk } from '@reduxjs/toolkit';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { LoginForm } from '../../components/Forms/LoginForm';
 
 // Store
+import { useAppThunkDispatch } from '../../store';
 import { login } from '../../store/authSlice';
 
 // Instruments
@@ -17,13 +16,13 @@ import { Token } from '../../types/common';
 
 export const LoginPage: FC = () => {
     const navigate = useNavigate();
-    const dispatch: Dispatch = useDispatch();
+    const dispatch = useAppThunkDispatch();
 
     const handlerOnFormSubmit
         = (credentials: LoginRequestData): Promise<AsyncThunk<Token, LoginRequestData, any>> => {
             // @ts-expect-error
             return dispatch(login(credentials))
-                .then((response: { payload: Token }) => {
+                .then((response) => {
                     const { payload } = response;
                     if (payload) {
                         navigate('/task-manager');

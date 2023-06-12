@@ -1,7 +1,5 @@
 // Core
 import { FC } from 'react';
-import { useDispatch } from 'react-redux';
-import { Dispatch } from 'redux';
 import { AsyncThunk } from '@reduxjs/toolkit';
 import { useNavigate } from 'react-router-dom';
 import { SignUpRequestData } from '../../types/Api';
@@ -11,17 +9,18 @@ import { Token } from '../../types/common';
 import { SignUpForm } from '../../components/Forms/SignUpForm';
 
 // Store
+import { useAppThunkDispatch } from '../../store';
 import { signup } from '../../store/authSlice';
 
 export const SignUpPage: FC = () => {
     const navigate = useNavigate();
-    const dispatch: Dispatch = useDispatch();
+    const dispatch = useAppThunkDispatch();
 
     const handlerOnFormSubmit
         = (userInfo: SignUpRequestData): Promise<AsyncThunk<Token, SignUpRequestData, any>> => {
         // @ts-expect-error
             return dispatch(signup(userInfo))
-                .then((response: { payload: Token }) => {
+                .then((response) => {
                     const { payload } = response;
                     if (payload) {
                         navigate('/task-manager');

@@ -1,9 +1,9 @@
 // Core
 import { useEffect } from 'react';
-import { ThunkDispatch } from 'redux-thunk';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 // Stores
+import { useAppThunkDispatch } from '../store';
 import {
     getIsAuth, getTokenCheckStatus, setToken, setTokenCheckStatus, fetchProfile,
 } from '../store/authSlice';
@@ -20,7 +20,7 @@ interface useRouteValidateResult {
 export function useRouteValidate(): useRouteValidateResult {
     const isAuth: boolean = useSelector(getIsAuth);
     const tokenCheckStatus: FetchStatusesType = useSelector(getTokenCheckStatus);
-    const dispatch: ThunkDispatch<any, any, any> = useDispatch();
+    const dispatch = useAppThunkDispatch();
 
     useEffect(() => {
         if (tokenCheckStatus !== FetchStatuses.idle) {
@@ -30,7 +30,7 @@ export function useRouteValidate(): useRouteValidateResult {
         const { token } = api;
         if (token) {
             dispatch(setToken(token));
-            dispatch(fetchProfile(null));
+            void dispatch(fetchProfile(null));
         }
 
         dispatch(setTokenCheckStatus(FetchStatuses.success));
