@@ -15,6 +15,20 @@ interface UiInputProps {
 export const UiInput: FC<UiInputProps> = ({
     type = 'text', label, name, placeholder, autoFocus, autoComplete, register, error,
 }) => {
+    if (type === 'textarea') {
+        return (
+            <label>
+                <div>{ label }</div>
+                <textarea
+                    name = { name }
+                    placeholder = { placeholder }
+                    { ...{ autoFocus, autoComplete } }
+                    { ...register } />
+                { error && <span className = 'error-message'>{ error.message }</span> }
+            </label>
+        );
+    }
+
     return (
         <label>
             <div>{ label }</div>

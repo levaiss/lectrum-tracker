@@ -12,7 +12,7 @@ import { LoginForm } from '../../components/Forms/LoginForm';
 import { login } from '../../store/authSlice';
 
 // Instruments
-import { loginRequestData } from '../../types/Api';
+import { LoginRequestData } from '../../types/Api';
 import { Token } from '../../types/common';
 
 export const LoginPage: FC = () => {
@@ -20,7 +20,7 @@ export const LoginPage: FC = () => {
     const dispatch: Dispatch = useDispatch();
 
     const handlerOnFormSubmit
-        = (credentials: loginRequestData): Promise<AsyncThunk<Token, loginRequestData, any>> => {
+        = (credentials: LoginRequestData): Promise<AsyncThunk<Token, LoginRequestData, any>> => {
             // @ts-expect-error
             return dispatch(login(credentials))
                 .then((response: { payload: Token }) => {

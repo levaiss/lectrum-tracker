@@ -2,7 +2,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from './index';
 import { Token } from '../types/common';
-import { loginRequestData, signUpRequestData } from '../types/Api';
+import { LoginRequestData, SignUpRequestData } from '../types/Api';
 
 // Store
 import { setUser } from './userSlice';
@@ -50,9 +50,9 @@ export const getTokenCheckStatus
 
 export const { setToken, setTokenCheckStatus } = authSlice.actions;
 
-export const login = createAsyncThunk<Token, loginRequestData, any>(
+export const login = createAsyncThunk<Token, LoginRequestData, any>(
     'auth/login',
-    async (credentials: loginRequestData, thunkAPI) => {
+    async (credentials: LoginRequestData, thunkAPI) => {
         try {
             const { data: newToken } = await api.auth.login(credentials);
             api.setToken(newToken);
@@ -71,9 +71,9 @@ export const login = createAsyncThunk<Token, loginRequestData, any>(
     },
 );
 
-export const signup = createAsyncThunk<Token, signUpRequestData, any>(
+export const signup = createAsyncThunk<Token, SignUpRequestData, any>(
     'auth/login',
-    async (userInfo: signUpRequestData, thunkAPI) => {
+    async (userInfo: SignUpRequestData, thunkAPI) => {
         try {
             const { data: newToken } = await api.auth.signup(userInfo);
             api.setToken(newToken);

@@ -7,13 +7,26 @@ export interface Api {
     [key: string]: any
 }
 
-export interface loginRequestData {
+export interface LoginRequestData {
     email: string
     password: string
 }
 
-export interface signUpRequestData {
+export interface SignUpRequestData {
     name: string
     email: string
     password: string
+}
+
+export interface TaskRequestData {
+    completed: boolean
+    title: string
+    description: string
+    deadline: Date | number | string
+    tag: string
+}
+
+export interface TaskUpdateRequestData {
+    id: string
+    body: TaskRequestData
 }

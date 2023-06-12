@@ -11,11 +11,11 @@ import { UiInput } from '../../Ui/UiInput';
 // Instruments
 import { LoginFormSchema } from './config';
 import { Token } from '../../../types/common';
-import { loginRequestData } from '../../../types/Api';
+import { LoginRequestData } from '../../../types/Api';
 
 interface loginFormProps {
     handlerOnFormSubmit:
-    (credentials: loginRequestData) => Promise<AsyncThunk<Token, loginRequestData, any>>;
+    (credentials: LoginRequestData) => Promise<AsyncThunk<Token, LoginRequestData, any>>;
 }
 
 export const LoginForm: FC<loginFormProps> = ({ handlerOnFormSubmit }) => {
@@ -32,7 +32,7 @@ export const LoginForm: FC<loginFormProps> = ({ handlerOnFormSubmit }) => {
         },
     });
 
-    const submitForm = handleSubmit((credentials: loginRequestData) => {
+    const submitForm = handleSubmit((credentials: LoginRequestData) => {
         return handlerOnFormSubmit(credentials);
     });
 

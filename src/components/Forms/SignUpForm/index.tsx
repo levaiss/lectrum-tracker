@@ -3,19 +3,19 @@ import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { AsyncThunk } from '@reduxjs/toolkit';
 
 // Components
-import { AsyncThunk } from '@reduxjs/toolkit';
 import { UiInput } from '../../Ui/UiInput';
 
 // Instruments
 import { SignUpFormSchema } from './config';
-import { signUpRequestData } from '../../../types/Api';
+import { SignUpRequestData } from '../../../types/Api';
 import { Token } from '../../../types/common';
 
 interface signupFormProps {
     handlerOnFormSubmit:
-    (credentials: signUpRequestData) => Promise<AsyncThunk<Token, signUpRequestData, any>>;
+    (credentials: SignUpRequestData) => Promise<AsyncThunk<Token, SignUpRequestData, any>>;
 }
 
 export const SignUpForm: FC<signupFormProps> = ({ handlerOnFormSubmit }) => {

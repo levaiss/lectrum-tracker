@@ -12,5 +12,5 @@ export interface TaskModel {
     description: string
     tag: TagModel
     created: string
-    deadline: string
+    deadline: Date | number | string
 }

@@ -1,18 +1,13 @@
 // Core
-import { configureStore } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { configureStore, Action } from '@reduxjs/toolkit';
 
 // Stores
-import { authSlice, authSliceState } from './authSlice';
-import { uiSlice, uiSliceState } from './uiSlice';
-import { userSlice, userSliceState } from './userSlice';
-import { taskSlice, taskSliceState } from './taskSlice';
-
-export interface RootState {
-    auth: authSliceState
-    ui: uiSliceState
-    user: userSliceState
-    task: taskSliceState
-}
+import { authSlice } from './authSlice';
+import { uiSlice } from './uiSlice';
+import { userSlice } from './userSlice';
+import { taskSlice } from './taskSlice';
 
 export const Store =  configureStore({
     reducer: {
@@ -22,3 +17,9 @@ export const Store =  configureStore({
         task: taskSlice.reducer,
     },
 });
+
+export type RootState = ReturnType<typeof Store.getState>;
+
+export type ThunkAppDispatch = ThunkDispatch<RootState, void, Action>;
+
+export const useAppThunkDispatch = () => useDispatch<ThunkAppDispatch>();

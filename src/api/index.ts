@@ -3,14 +3,14 @@ import axios, { AxiosResponse } from 'axios';
 import { Token } from '../types/common';
 import {
     Api,
-    signUpRequestData,
-    loginRequestData,
+    SignUpRequestData,
+    LoginRequestData, TaskRequestData, TaskUpdateRequestData,
 } from '../types/Api';
 
 // Instruments
 import { ROOT_URL, AUTH_TOKEN_KAY } from './config';
 import { UserModel } from '../types/UserModel';
-import { TaskModel } from '../types/TaskModel';
+import { TagModel, TaskModel } from '../types/TaskModel';
 
 export const api: Api = {
     get token(): Token {
@@ -23,12 +23,12 @@ export const api: Api = {
         localStorage.removeItem(AUTH_TOKEN_KAY);
     },
     auth: {
-        async signup(userInfo: signUpRequestData): Promise<Token> {
+        async signup(userInfo: SignUpRequestData): Promise<Token> {
             const { data }: { data: Token } = await axios.post(`${ROOT_URL}/auth/registration`, userInfo);
 
             return data;
         },
-        async login(credentials: loginRequestData): Promise<Token> {
+        async login(credentials: LoginRequestData): Promise<Token> {
             const { email, password } = credentials;
             const { data }: { data: Token } = await axios.get(`${ROOT_URL}/auth/login`, {
                 headers: {
@@ -64,6 +64,46 @@ export const api: Api = {
             });
 
             return data;
+        },
+        async create(body: TaskRequestData): Promise<TaskModel> {
+            const { data }: { data: TaskModel } = await axios.post(`${ROOT_URL}/tasks`, body, {
+                headers: {
+                    Authorization: `Bearer ${api.token}`,
+                },
+            });
+
+            return data;
+        },
+        async update(payload: TaskUpdateRequestData): Promise<TaskModel> {
+            const {
+                id,
+                body,
+            } = payload;
+            const { data }: { data: TaskModel } = await axios.put(`${ROOT_URL}/tasks/${id}`, body, {
+                headers: {
+                    Authorization: `Bearer ${api.token}`,
+                },
+            });
+
+            return data;
+        },
+        delete(id: string): Promise<any> {
+            return axios.delete(`${ROOT_URL}/tasks/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${api.token}`,
+                },
+            });
+        },
+    },
+    tags: {
+        async all(): Promise<TagModel[]> {
+            const tags: TagModel[] = await axios.get(`${ROOT_URL}/tags`, {
+                headers: {
+                    Authorization: `Bearer ${api.token}`,
+                },
+            });
+
+            return tags;
         },
     },
 };
