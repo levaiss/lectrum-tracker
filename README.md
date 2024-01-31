@@ -1,11 +1,8 @@
-# Другий персональний проєкт курсу → [Професійний курс з React, Redux, MobX, TypeScript](https://lectrum.io/course/react-redux?utm_medium=referral&utm_source=gitlab-weather&utm_campaign=rtx)
-
-[Посилання на застосунок-референс](https://lab.lectrum.io/todo)
-
+# Second personal project of the course → Professional course on React, Redux, MobX, TypeScript
 
 Ласкаво просимо! 🚀
 
-1. Щоб встановити залежності, виконайте:
+1. To set dependencies, run:
 
 ```sh
 yarn
@@ -13,7 +10,7 @@ yarn
 npm i
 ```
 
-2. Щоб запустити проект, виконайте:
+2. To start a project, do the following:
 
 ```sh
 yarn dev
@@ -21,7 +18,7 @@ yarn dev
 npm run dev
 ```
 
-3. Щоб зібрати проект, виконайте:
+3. To build a project, do the following:
 
 ```sh
 yarn build
@@ -29,7 +26,7 @@ yarn build
 npm run build
 ```
 
-4. Щоб запустити проект у режимі production, виконайте:
+4. To run the project in production mode, do the following:
 
 ```sh
 yarn build && yarn start  
